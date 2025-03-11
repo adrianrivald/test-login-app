@@ -50,8 +50,6 @@ const LoginForm = ({ accessToken, refreshToken, headers }) => {
         );
       }
 
-      return response; // Return response for other uses or error handling
-
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Login failed");
@@ -59,6 +57,7 @@ const LoginForm = ({ accessToken, refreshToken, headers }) => {
 
       alert("Login success");
       // Redirect or perform other actions upon successful login
+      return response; // Return response for other uses or error handling
     } catch (error) {
       setError(error.message);
       alert(`Login failed: ${error.message}`);
